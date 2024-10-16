@@ -13,7 +13,7 @@ console.log("Hello World");
 const HomePage = __dirname + "/view/index.html";
 
 app.get("/", (req, res) => {
-  res.sendFiles(HomePage);
+  res.sendFile(HomePage);
 });
 
 module.exports = app;
