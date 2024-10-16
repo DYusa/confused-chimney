@@ -1,5 +1,5 @@
 let express = require("express");
-
+let dotenv = require("dotenv").config();
 let app = express();
 
 console.log("Hello World");
@@ -28,5 +28,20 @@ app.use("/public", express.static(styles));
 // her mesajda id gerekemedigi icin requesti her seferinde nasil alacagimizi yazmiyoruz
 
 //const message = (req, res) => {}
-app.get("/json", (req, res) => res.json({ message: "Hello json" }));
+
+app.get(
+  "/json",
+  (req, res) => {
+    let data = { message: "Hello json" };
+
+    if (process.env.MESSAGE_STYLE === "uppercase") {
+      data = { message: data.message.toUpperCase() };
+      res.json(data);
+    } else {
+      res.json(data);
+    }
+  }
+
+  ///  res.json({ message: "Hello json" }).MESSAGE_STYLE(dotenv.message)
+);
 module.exports = app;
