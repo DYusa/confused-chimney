@@ -5,7 +5,7 @@ let app = express();
 console.log("Hello World");
 
 const salutationHandler = (res, req) => {
-  res.send("hello express");
+  res.send("Hello Express");
 };
 
 app.get("/", salutationHandler);
