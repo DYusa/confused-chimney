@@ -10,10 +10,18 @@ console.log("Hello World");
 
 // app.get("/", salutationHandler);
 
-const HomePage = __dirname + "/view/index.html";
+const homePage = __dirname + "/views/index.html";
 
 app.get("/", (req, res) => {
-  res.sendFile(HomePage);
+  res.sendFile(homePage);
 });
 
+const styles = __dirname + "/public";
+
+app.use("/public", express.static(styles));
+
+// app.use((req, res) => {
+//   res.express.static(styles);
+// no workoe
+// });
 module.exports = app;
