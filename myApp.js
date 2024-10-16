@@ -28,14 +28,17 @@ app.use("/public", express.static(styles));
 // her mesajda id gerekemedigi icin requesti her seferinde nasil alacagimizi yazmiyoruz
 
 //const message = (req, res) => {}
+console.log(process.env.MESSAGE_STYLE)
 
 app.get(
   "/json",
   (req, res) => {
-    let data = { message: "Hello json" };
+    let data = { "message": "Hello json" };
+
+    
 
     if (process.env.MESSAGE_STYLE === "uppercase") {
-      data = { message: data.message.toUpperCase() };
+      data = { "message": data.message.toUpperCase() };
       res.json(data);
     } else {
       res.json(data);
