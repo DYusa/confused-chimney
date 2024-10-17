@@ -39,6 +39,39 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/now', function(req, res, next) {
+  req.time = new Date().toString();
+  next();
+}, function(req, res) {
+  res.json({"time": req.time});
+  res.send(req.user);
+});
+
+app.get('/:word/echo', function(req, res) {
+  res.json({"echo": req.params.word});
+});
+
+
+
+app.get("/name", function(req, res) {
+  let firstName = req.query.first;
+  let lastName = req.query.last;
+  res.json({
+    name: `${firstName} ${lastName}`
+  });
+});
+
+// app.get("/name", function(req, res) {
+//   let firstName = req.query.first;
+//   let lastName = req.query.last;
+
+// or  var { first: firstName, last: lastName } = req.query;
+
+
+//   res.json({
+//     name: `${firstName} ${lastName}`
+//   });
+// });
 
 
 app.get(
