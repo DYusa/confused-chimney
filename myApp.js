@@ -73,6 +73,11 @@ app.get("/name", function(req, res) {
 //   });
 // });
 
+//function inside the function to get the query parameter input from client
+// app.get('/name', (req, res) => {
+//   res.json({ 'name': ${req.query.first} ${req.query.last} })
+// })
+
 
 app.get(
   "/json",
