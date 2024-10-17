@@ -2,6 +2,8 @@ let express = require("express");
 let dotenv = require("dotenv").config();
 let app = express();
 
+
+
 console.log("Hello World");
 
 // const salutationHandler = (req, res) => {
@@ -29,6 +31,15 @@ app.use("/public", express.static(styles));
 
 //const message = (req, res) => {}
 console.log(process.env.MESSAGE_STYLE)
+
+
+app.use((req, res, next) => {
+  let sting = req.method + " " + req.path + " - " + req.ip;
+  console.log(sting)
+  next();
+});
+
+
 
 app.get(
   "/json",
